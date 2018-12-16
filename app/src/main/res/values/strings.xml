@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">retrofit</string>
+    <string name="title_home">홈</string>
+    <string name="title_likes">찜</string>
+    <string name="title_chat">채팅</string>
+    <string name="title_setting">설정</string>
+</resources>
