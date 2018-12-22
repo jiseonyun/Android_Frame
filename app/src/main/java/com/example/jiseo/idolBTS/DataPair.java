@@ -1,7 +1,13 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
+
+import android.content.Context;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 public class DataPair {
     @SerializedName("id")
             @Expose
@@ -112,6 +118,16 @@ public class DataPair {
     }
     public void TEST(String text){
         title =  text + "id: "+ id;
+    }
+    private static final String FILENAME = "LikeList.txt";
+    public void savdId(Context context)throws IOException {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(FILENAME, Context.MODE_APPEND));
+            outputStreamWriter.write(id+",");
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+        }
     }
 }
 

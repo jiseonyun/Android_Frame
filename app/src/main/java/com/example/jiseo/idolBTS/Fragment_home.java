@@ -1,10 +1,9 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jiseo.idolBTS.R;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -41,7 +43,6 @@ public class Fragment_home extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=  inflater.inflate(R.layout.fragment_test,null);
         view = inflater.inflate(R.layout.fragment_home, null);
 
         // tv= view.findViewById(R.id.t1);
@@ -60,9 +61,31 @@ public class Fragment_home extends Fragment {
         mAdapter.setOnItemClickListener(new CustomAdapter.OnItemClickListener() {
             @Override
             public void OnItemClick(int position) {
-                ButtonFunc(position, "Clicked");
+                try {
+                    ButtonFunc(position);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
+
+        //onScrolled 를 통해서 현재 스크롤되고 있는 이벤트에 대해서 받아볼 수 있습니다.
+        mLinearLayoutManager.setOrientation(mLinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //last position
+                int lastVisibleItemPosition = ((LinearLayoutManager) mRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+                int itemTotalCount = mRecyclerView.getAdapter().getItemCount() - 1;
+                if (lastVisibleItemPosition == itemTotalCount) {
+                    Toast.makeText(getContext(), "Last Position", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
         // RecyclerView의 줄(row) 사이에 수평선을 넣기위해 사용됩니다.
        /*
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
@@ -76,8 +99,10 @@ public class Fragment_home extends Fragment {
     }
 
    // button.setOnClickListener
-    public void ButtonFunc(int position, String text){
-        mArrayList.get(position).TEST(text +" : " + position);
+    public void ButtonFunc(int position) throws IOException {
+        // mArrayList.get(position).TEST(text +" : " + position);
+        // datapair - method
+        mArrayList.get(position).savdId(this.getContext());
         mAdapter.notifyItemChanged(position);
 
     }

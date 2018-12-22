@@ -1,27 +1,22 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.jiseo.retrofit.R;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -36,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     private CustomAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
+    private static final String TAG = MainActivity.class.getSimpleName(); // delete
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +45,12 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, new Fragment_home())
                 .commit();
+        //FCM
+        FirebaseInstanceId.getInstance().getToken();
+
+        if (FirebaseInstanceId.getInstance().getToken() != null) {
+            Log.d(TAG, "token = " + FirebaseInstanceId.getInstance().getToken());
+        }
     }
 
     private boolean loadFragment(Fragment fragment){

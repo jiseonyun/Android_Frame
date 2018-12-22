@@ -1,4 +1,4 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
 import android.view.View;
 

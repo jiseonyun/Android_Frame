@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "330926446456",
+    "firebase_url": "https://idolbts.firebaseio.com",
+    "project_id": "idolbts",
+    "storage_bucket": "idolbts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330926446456:android:230319d37e79ca81",
+        "android_client_info": {
+          "package_name": "com.example.jiseo.idolBTS"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330926446456-b15do8p216e3fpbrg0dab2k9ekcr8794.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ7tMom3J15HABtCJKmj-4u80mMmSmg60"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

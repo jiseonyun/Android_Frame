@@ -1,4 +1,4 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

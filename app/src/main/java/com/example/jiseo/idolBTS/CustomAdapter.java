@@ -1,23 +1,16 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.jiseo.retrofit.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -57,7 +50,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_likeButton= (Button) view.findViewById(R.id.LikeButton);
             this.tv_image = (ImageView) view.findViewById(R.id.tv_item_image);
             this.tv_title = (TextView) view.findViewById(R.id.tv_item_title);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            tv_likeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(listener!=null)
@@ -69,6 +62,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                     }
                 }
             });
+            /*
+            *        itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener!=null)
+                    {
+                        int position = getAdapterPosition();
+                        if(position!= RecyclerView.NO_POSITION){
+                            listener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
+            *
+            * */
         }
 
     }
@@ -81,7 +89,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, null);
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.list_item, viewGroup, false);
+                .inflate(R.layout.item_list, viewGroup, false);
         CustomViewHolder viewHolder = new CustomViewHolder(view,mListener);
         return viewHolder;
     }

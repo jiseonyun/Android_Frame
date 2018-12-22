@@ -1,4 +1,4 @@
-package com.example.jiseo.retrofit;
+package com.example.jiseo.idolBTS;
 
 public interface OnLoadMoreListener {
     void onLoadMore();
